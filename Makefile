@@ -1,20 +1,24 @@
 # Makefile for Hello World project
 
-runner: /home/daniil/tpmp-lab3-task3/obj/main.o /home/daniil/tpmp-lab3-task3/obj/students.o /home/daniil/tpmp-lab3-task3/obj/countries.o /home/daniil/tpmp-lab3-task3/obj/firstTask.o
-	gcc -o runner /home/daniil/tpmp-lab3-task3/obj/main.o /home/daniil/tpmp-lab3-task3/obj/students.o /home/daniil/tpmp-lab3-task3/obj/countries.o /home/daniil/tpmp-lab3-task3/obj/firstTask.o
+OBJ_DIR := /home/daniil/tpmp-lab3-task3/obj
+SRC_DIR := /home/daniil/tpmp-lab3-task3/src
+BIN_DIR := /home/daniil/tpmp-lab3-task3
 
-/home/daniil/tpmp-lab3-task3/obj/main.o: /home/daniil/tpmp-lab3-task3/src/main.c
-	gcc -c /home/daniil/tpmp-lab3-task3/src/main.c -o /home/daniil/tpmp-lab3-task3/obj/main.o
-	
-/home/daniil/tpmp-lab3-task3/obj/students.o: /home/daniil/tpmp-lab3-task3/src/students.c
-	gcc -c /home/daniil/tpmp-lab3-task3/src/students.c -o /home/daniil/tpmp-lab3-task3/obj/students.o
-	
-/home/daniil/tpmp-lab3-task3/obj/countries.o: /home/daniil/tpmp-lab3-task3/src/countries.c
-	gcc -c /home/daniil/tpmp-lab3-task3/src/countries.c -o /home/daniil/tpmp-lab3-task3/obj/countries.o
+runner: $(OBJ_DIR)/main.o $(OBJ_DIR)/students.o $(OBJ_DIR)/countries.o $(OBJ_DIR)/firstTask.o
+	gcc -o $(BIN_DIR)/runner $(OBJ_DIR)/main.o $(OBJ_DIR)/students.o $(OBJ_DIR)/countries.o $(OBJ_DIR)/firstTask.o
 
-/home/daniil/tpmp-lab3-task3/obj/firstTask.o: /home/daniil/tpmp-lab3-task3/src/firstTask.c
-	gcc -c /home/daniil/tpmp-lab3-task3/src/firstTask.c -o /home/daniil/tpmp-lab3-task3/obj/firstTask.o
+$(OBJ_DIR)/main.o: $(SRC_DIR)/main.c
+	gcc -c $(SRC_DIR)/main.c -o $(OBJ_DIR)/main.o
+	
+$(OBJ_DIR)/students.o: $(SRC_DIR)/students.c
+	gcc -c $(SRC_DIR)/students.c -o $(OBJ_DIR)/students.o
+	
+$(OBJ_DIR)/countries.o: $(SRC_DIR)/countries.c
+	gcc -c $(SRC_DIR)/countries.c -o $(OBJ_DIR)/countries.o
+
+$(OBJ_DIR)/firstTask.o: $(SRC_DIR)/firstTask.c
+	gcc -c $(SRC_DIR)/firstTask.c -o $(OBJ_DIR)/firstTask.o
 	
 clean:
-	rm -f /home/daniil/tpmp-lab3-task3/obj/*.o /home/daniil/tpmp-lab3-task3/runner
+	rm -f $(OBJ_DIR)/*.o $(BIN_DIR)/runner
 
